@@ -12,6 +12,7 @@ public class CiudadanoResource {
     @Inject
     private CiudadanoService ciudadanoService;
     @POST
+    
     @Path("/crear/{url}")
     public String crearCiudadano(@PathParam("url") String url) {
         this.ciudadanoService.crearUrl(url);
