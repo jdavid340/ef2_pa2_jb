@@ -24,21 +24,14 @@ public class VehiculoService {
         vehiculoRepositoryImpl.deleteById(id);
     }
 
-    public void actualizar(Integer id, Vehiculo vehiculo) {
-        Vehiculo vehiculoExistente = vehiculoRepositoryImpl.findById(id);
-        vehiculoExistente.setMarca(vehiculo.getMarca());
-        vehiculoExistente.setModelo(vehiculo.getModelo());
-        vehiculoExistente.setPlaca(vehiculo.getPlaca());
-
-    }
 
     @ContarAuditoria
-    public Vehiculo buscarPorPlaca(String placa) {
+    public Vehiculo buscar(String placa) {
         return vehiculoRepositoryImpl.buscarPorPlaca(placa);
     }
 
     @ContarAuditoria
-    public void actualiazarPorPlaca(String placa, Vehiculo vehiculo) {
+    public void actualiazar(String placa, Vehiculo vehiculo) {
         Vehiculo vehiculoExistente = vehiculoRepositoryImpl.buscarPorPlaca(placa);
         vehiculoExistente.setMarca(vehiculo.getMarca());
         vehiculoExistente.setModelo(vehiculo.getModelo());

@@ -18,7 +18,7 @@ public class VehiculoResource {
     @PUT
     @Path("/actualizar/{placa}")
     public void actualizarVehiculo(@PathParam("placa") String placa, Vehiculo vehiculo) {
-        this.vehiculoService.actualiazarPorPlaca(placa, vehiculo);
+        this.vehiculoService.actualiazar(placa, vehiculo);
     }
 
     @POST
@@ -30,6 +30,6 @@ public class VehiculoResource {
     @GET
     @Path("/buscar/{placa}")
     public Vehiculo buscarPlaca(@PathParam("placa") String placa) {
-        return this.vehiculoService.buscarPorPlaca(placa);
+        return this.vehiculoService.buscar(placa);
     }
 }

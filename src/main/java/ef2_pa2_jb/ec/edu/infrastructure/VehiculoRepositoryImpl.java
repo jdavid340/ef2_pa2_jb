@@ -10,7 +10,7 @@ import jakarta.transaction.Transactional;
 public class VehiculoRepositoryImpl  implements PanacheRepositoryBase<Vehiculo, Integer>{
     
     public Vehiculo buscarPorPlaca(String placa){
-        return find("vehi_placa", placa).firstResult();
+        return find("placa", placa).firstResult();
     }
         
 

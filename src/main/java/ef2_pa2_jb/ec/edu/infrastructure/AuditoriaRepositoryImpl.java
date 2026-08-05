@@ -2,7 +2,8 @@ package ef2_pa2_jb.ec.edu.infrastructure;
 
 import ef2_pa2_jb.ec.edu.domain.model.Auditoria;
 import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
-
+import jakarta.enterprise.context.ApplicationScoped;
+@ApplicationScoped
 public class AuditoriaRepositoryImpl implements PanacheRepositoryBase<Auditoria, Integer> {
 
     public Auditoria encontrarPlaca(String placa) {

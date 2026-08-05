@@ -3,23 +3,31 @@ package ef2_pa2_jb.ec.edu.application.service;
 import ef2_pa2_jb.ec.edu.domain.model.Auditoria;
 import ef2_pa2_jb.ec.edu.infrastructure.AuditoriaRepositoryImpl;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 @ApplicationScoped
 @Transactional
 public class AuditoriaService {
 
-    private AuditoriaRepositoryImpl auditoria;
+    @Inject
+    private AuditoriaRepositoryImpl ar;
 
-    public void actualizar(Auditoria auditoria){
-        Auditoria auditoriaExistente = this.auditoria.encontrarPlaca(auditoria.getPlaca());
-        auditoriaExistente.setInserts(auditoria.getInserts());
-        auditoriaExistente.setDelete(auditoria.getDelete());
-        auditoriaExistente.setUpdate(auditoria.getInserts());
-        auditoriaExistente.setseleccionar(auditoria.getseleccionar());
+    public void insertar(Auditoria au) {
+        this.ar.persist(au);
     }
 
-    public Auditoria buscarPlaca(String placa){
-        return this.auditoria.encontrarPlaca(placa);
+    public void actualizar(Auditoria au) {
+        Auditoria nueva = this.ar.encontrarPlaca(au.getPlaca());
+
+        if (nueva != null) {
+
+            nueva.setInsertar(nueva.getInsertar() + au.getInsertar());
+            nueva.setSeleccinar(nueva.getSeleccinar() + au.getSeleccinar());
+            nueva.setActualizar(nueva.getActualizar() + au.getActualizar());
+            nueva.setEliminar(nueva.getEliminar() + au.getEliminar());
+        } else {
+            insertar(au);
+        }
     }
 }
